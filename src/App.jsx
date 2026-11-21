@@ -20,15 +20,15 @@ const styles = `
 @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:wght@400;500&display=swap");
 
 :root {
-  --paper: #ffffff;
+  --paper: #fbf9f6;
   --card: #ffffff;
-  --parchment: #e8e2d4;
-  --soft: #f5f1e8;
-  --night: #1f2150;
-  --indigo: #42478b;
-  --orchid: #b67ddb;
-  --muted: #50558f;
-  --line: #d3cab4;
+  --parchment: #eee8dc;
+  --soft: #f4f0f8;
+  --night: #24213b;
+  --indigo: #6254a4;
+  --orchid: #bf83c9;
+  --muted: #68637d;
+  --line: #e8e2ed;
   --nav-h: 73px;
 }
 
@@ -64,23 +64,26 @@ a { color: inherit; }
 
 :focus-visible { outline: 3px solid var(--indigo); outline-offset: 3px; }
 
-.wrap { width: 100%; max-width: none; margin: 0; padding: 0 clamp(16px, 2.5vw, 32px); }
+.wrap { width: 100%; max-width: 1320px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px); }
 
 .nav {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(251, 249, 246, 0.9);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid #ece7da;
+  border-bottom: 1px solid rgba(232, 226, 237, 0.8);
 }
 
 .nav-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px clamp(16px, 2.5vw, 32px);
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 12px clamp(20px, 4vw, 56px);
 }
 
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -89,7 +92,7 @@ a { color: inherit; }
   width: 42px;
   height: 42px;
   border-radius: 13px;
-  background: linear-gradient(135deg, var(--indigo), var(--orchid));
+  background: linear-gradient(145deg, var(--indigo), var(--orchid));
   color: #ffffff;
   display: grid;
   place-items: center;
@@ -107,15 +110,15 @@ a { color: inherit; }
 
 .brand-text span { display: block; font-size: 12px; color: var(--muted); }
 
-.nav-links { display: flex; gap: 36px; }
+.nav-links { display: flex; align-items: center; gap: clamp(18px, 3vw, 36px); }
 
 .nav-links a {
   text-decoration: none;
-  color: var(--night);
+  color: var(--muted);
   font-weight: 500;
-  padding: 6px 0;
+  padding: 8px 0;
   border-bottom: 2px solid transparent;
-  transition: color 0.2s, border-color 0.2s;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
 }
 
 .nav-links a:hover { color: var(--indigo); }
@@ -139,7 +142,7 @@ a { color: inherit; }
 .hero {
   position: relative;
   isolation: isolate;
-  min-height: calc(100svh - var(--nav-h));
+  min-height: min(820px, calc(100svh - var(--nav-h)));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -185,19 +188,54 @@ a { color: inherit; }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(240px, 360px);
-  gap: 48px;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 390px);
+  gap: clamp(40px, 8vw, 112px);
   align-items: center;
 }
 
 .profile {
+  position: relative;
   aspect-ratio: 4 / 5;
-  border-radius: 28px;
+  border: 8px solid rgba(255, 255, 255, 0.82);
+  border-radius: 32px;
   overflow: hidden;
-  box-shadow: 0 24px 50px -24px rgba(31, 33, 80, 0.5);
+  box-shadow: 0 30px 70px -32px rgba(36, 33, 59, 0.4);
 }
 
 .profile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.profile-caption {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  background: rgba(36, 33, 59, 0.76);
+  color: #fff;
+  font-size: 13px;
+  backdrop-filter: blur(8px);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 20px;
+  color: var(--indigo);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--orchid);
+}
 
 .ph {
   width: 100%;
@@ -219,7 +257,7 @@ a { color: inherit; }
   color: var(--night);
   font-family: "Bricolage Grotesque", sans-serif;
   font-weight: 700;
-  font-size: clamp(38px, 7vw, 76px);
+  font-size: clamp(48px, 7.2vw, 88px);
   line-height: 1.02;
   letter-spacing: -0.02em;
   max-width: 14ch;
@@ -232,32 +270,33 @@ a { color: inherit; }
   color: transparent;
 }
 
-.hero p { max-width: 52ch; margin-top: 24px; color: var(--muted); }
+.hero p { max-width: 48ch; margin-top: 24px; color: var(--muted); font-size: 18px; }
 
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 
 .btn {
   display: inline-block;
-  padding: 12px 24px;
+  padding: 13px 25px;
   border-radius: 999px;
   font-weight: 500;
   text-decoration: none;
-  border: 2px solid var(--night);
-  transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+  border: 1px solid var(--night);
+  transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 
 .btn:hover { transform: translateY(-2px); }
 
-.btn-solid { background: var(--indigo); border-color: var(--indigo); color: var(--card); box-shadow: 0 12px 24px -10px rgba(66, 71, 139, 0.7); }
+.btn-solid { background: var(--indigo); border-color: var(--indigo); color: var(--card); box-shadow: 0 12px 24px -10px rgba(98, 84, 164, 0.65); }
 .btn-solid:hover { background: var(--night); border-color: var(--night); }
-.btn-line:hover { background: var(--night); color: var(--card); }
+.btn-line { background: rgba(255, 255, 255, 0.5); border-color: var(--line); }
+.btn-line:hover { background: var(--night); border-color: var(--night); color: var(--card); }
 
 .section {
-  min-height: calc(100svh - var(--nav-h));
+  min-height: min(760px, calc(100svh - var(--nav-h)));
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 56px 0;
+  padding: clamp(64px, 9vw, 112px) 0;
 }
 
 .section h2 {
@@ -266,7 +305,7 @@ a { color: inherit; }
   font-weight: 700;
   font-size: clamp(30px, 4.5vw, 46px);
   letter-spacing: -0.02em;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
 }
 
 .section h2::after {
@@ -285,15 +324,25 @@ a { color: inherit; }
 
 .section-center { text-align: center; }
 
-.about { max-width: 62ch; margin: 0 auto; font-size: 19px; }
+.about {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(28px, 5vw, 52px);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: linear-gradient(145deg, #fff, #f8f5fb);
+  box-shadow: 0 24px 60px -44px rgba(36, 33, 59, 0.35);
+  font-size: 19px;
+  text-align: left;
+}
 
-.about p + p { margin-top: 16px; color: var(--muted); font-size: 17px; }
+.about p + p { margin-top: 16px; color: var(--muted); font-size: 16px; }
 
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
 
-.panel { border: 1px solid #ece7da; border-radius: 28px; padding: 36px; background: var(--card); box-shadow: 0 20px 50px -30px rgba(66, 71, 139, 0.35); }
+.panel { border: 1px solid var(--line); border-radius: 28px; padding: clamp(24px, 4vw, 40px); background: var(--card); box-shadow: 0 24px 60px -44px rgba(36, 33, 59, 0.38); }
 
-.panel h3 { font-family: "Bricolage Grotesque", sans-serif; font-size: 22px; margin-bottom: 24px; }
+.panel h3 { font-family: "Bricolage Grotesque", sans-serif; font-size: 23px; margin-bottom: 28px; }
 
 .items { list-style: none; display: grid; gap: 20px; }
 
@@ -315,11 +364,11 @@ a { color: inherit; }
 
 .item p { color: var(--muted); font-size: 15px; margin-top: -8px; }
 
-.projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
 
-.project { background: var(--card); border: 1px solid #ece7da; border-radius: 28px; overflow: hidden; box-shadow: 0 20px 50px -30px rgba(66, 71, 139, 0.35); transition: transform 0.3s, box-shadow 0.3s, border-color 0.2s; }
+.project { background: var(--card); border: 1px solid var(--line); border-radius: 24px; overflow: hidden; box-shadow: 0 20px 50px -38px rgba(36, 33, 59, 0.45); transition: transform 0.3s, box-shadow 0.3s, border-color 0.2s; }
 
-.project:hover { transform: translateY(-6px); border-color: var(--orchid); box-shadow: 0 30px 60px -28px rgba(66, 71, 139, 0.55); }
+.project:hover { transform: translateY(-6px); border-color: var(--orchid); box-shadow: 0 30px 60px -30px rgba(98, 84, 164, 0.4); }
 
 .project-img img, .project-img .ph { transition: transform 0.5s; }
 
@@ -338,7 +387,7 @@ a { color: inherit; }
 
 .project-btn:focus-visible { outline-offset: -3px; }
 
-.project-img { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+.project-img { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: var(--soft); }
 
 .project-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
@@ -433,13 +482,13 @@ a { color: inherit; }
 
 .thumb-on { border-color: var(--indigo); }
 
-.project-body { padding: 20px 24px 24px; }
+.project-body { padding: 22px 24px 26px; }
 
-.project-body h3 { font-family: "Bricolage Grotesque", sans-serif; font-size: 20px; }
+.project-body h3 { font-family: "Bricolage Grotesque", sans-serif; font-size: 21px; }
 
 .project-body p { color: var(--muted); font-size: 15px; margin-top: 4px; }
 
-.footer { padding: 56px 0 32px; border-top: 1px solid var(--line); text-align: center; }
+.footer { margin: 32px 0; padding: clamp(36px, 6vw, 64px); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 32px; background: var(--night); color: #fff; text-align: center; }
 
 .footer-title {
   font-family: "Bricolage Grotesque", sans-serif;
@@ -448,27 +497,42 @@ a { color: inherit; }
   letter-spacing: -0.02em;
 }
 
+.footer-title::after {
+  content: "";
+  display: block;
+  width: 42px;
+  height: 3px;
+  margin: 14px auto 0;
+  border-radius: 3px;
+  background: var(--orchid);
+}
+
 .contact-list {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 24px 64px;
-  margin-top: 28px;
+  gap: 12px;
+  margin-top: 32px;
   text-align: left;
 }
 
-.contact-list span { display: block; color: var(--muted); font-size: 15px; }
+.contact-list li { min-width: min(220px, 100%); padding: 16px 20px; border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 16px; background: rgba(255, 255, 255, 0.06); }
 
-.contact-list a { font-weight: 500; }
+.contact-list span { display: block; margin-bottom: 4px; color: #c9c4da; font-size: 13px; }
 
-.copyright { margin-top: 48px; padding-top: 24px; border-top: 1px solid #ece7da; color: var(--muted); font-size: 15px; }
+.contact-list a { font-weight: 500; text-decoration-color: rgba(255, 255, 255, 0.35); text-underline-offset: 3px; }
+
+.contact-list a:hover { color: #e8c9ef; }
+
+.copyright { margin-top: 36px; padding-top: 22px; border-top: 1px solid rgba(255, 255, 255, 0.16); color: #c9c4da; font-size: 14px; }
 
 @media (max-width: 800px) {
   .two-col { grid-template-columns: 1fr; }
   .projects { grid-template-columns: 1fr; }
   .hero-grid { grid-template-columns: 1fr; gap: 32px; }
-  .profile { max-width: 280px; }
+  .hero { min-height: auto; padding: 72px 0; }
+  .profile { max-width: 320px; }
   .menu-btn { display: grid; }
   .nav-links {
     display: none;
@@ -478,13 +542,14 @@ a { color: inherit; }
     right: 0;
     flex-direction: column;
     gap: 4px;
-    padding: 12px clamp(16px, 2.5vw, 32px) 20px;
+    padding: 12px clamp(20px, 4vw, 56px) 20px;
     background: var(--card);
     border-bottom: 1px solid var(--line);
   }
   .nav-links.open { display: flex; }
   .nav-links a, .nav-links a.active { padding: 10px 0; border-bottom: 0; }
-  .section { padding: 40px 0; }
+  .section { min-height: auto; padding: 72px 0; }
+  .footer { margin: 16px 0; padding: 36px 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -700,6 +765,7 @@ export default function App() {
             <div className="frame">
               <div className="hero-grid">
                 <div>
+                  <span className="eyebrow">Designing with curiosity</span>
                   <h1>
                     Aspiring <span className="grad">UI/UX</span> designer
                   </h1>
@@ -714,6 +780,7 @@ export default function App() {
                 </div>
                 <div className="profile">
                   <Picture src={profileImage} label="Profile photo" />
+                  <span className="profile-caption">Davao City, Philippines</span>
                 </div>
               </div>
             </div>
