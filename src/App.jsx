@@ -488,7 +488,7 @@ a { color: inherit; }
 
 .project-body p { color: var(--muted); font-size: 15px; margin-top: 4px; }
 
-.footer { margin: 32px 0; padding: clamp(36px, 6vw, 64px); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 32px; background: var(--night); color: #fff; text-align: center; }
+.footer { margin: 32px 0 0; padding: clamp(40px, 6vw, 64px) 0 24px; border-top: 1px solid var(--line); background: transparent; color: var(--night); text-align: center; }
 
 .footer-title {
   font-family: "Bricolage Grotesque", sans-serif;
@@ -517,15 +517,15 @@ a { color: inherit; }
   text-align: left;
 }
 
-.contact-list li { min-width: min(220px, 100%); padding: 16px 20px; border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 16px; background: rgba(255, 255, 255, 0.06); }
+.contact-list li { min-width: min(220px, 100%); padding: 16px 20px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255, 255, 255, 0.72); }
 
-.contact-list span { display: block; margin-bottom: 4px; color: #c9c4da; font-size: 13px; }
+.contact-list span { display: block; margin-bottom: 4px; color: var(--muted); font-size: 13px; }
 
-.contact-list a { font-weight: 500; text-decoration-color: rgba(255, 255, 255, 0.35); text-underline-offset: 3px; }
+.contact-list a { font-weight: 500; text-decoration-color: rgba(98, 84, 164, 0.35); text-underline-offset: 3px; }
 
-.contact-list a:hover { color: #e8c9ef; }
+.contact-list a:hover { color: var(--indigo); }
 
-.copyright { margin-top: 36px; padding-top: 22px; border-top: 1px solid rgba(255, 255, 255, 0.16); color: #c9c4da; font-size: 14px; }
+.copyright { margin-top: 36px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
 
 @media (max-width: 800px) {
   .two-col { grid-template-columns: 1fr; }
@@ -549,7 +549,7 @@ a { color: inherit; }
   .nav-links.open { display: flex; }
   .nav-links a, .nav-links a.active { padding: 10px 0; border-bottom: 0; }
   .section { min-height: auto; padding: 72px 0; }
-  .footer { margin: 16px 0; padding: 36px 20px; }
+  .footer { margin: 16px 0 0; padding: 36px 0 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
